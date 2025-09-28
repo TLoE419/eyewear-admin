@@ -57,6 +57,7 @@ SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 ## 故障排除
 
 如果部署失敗，請檢查：
+
 1. 構建日誌中的錯誤信息
 2. 環境變數是否正確設置
 3. Supabase 連接是否正常
