@@ -1,6 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
+
+export const dynamic = "force-static";
 import { PhotoCategory } from "@/lib/photoManagement";
+
+export async function generateStaticParams() {
+  return Object.values(PhotoCategory).map((category) => ({
+    category: category,
+  }));
+}
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey =

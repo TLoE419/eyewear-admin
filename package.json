@@ -27,8 +27,7 @@
     "diagnose-storage": "tsx scripts/diagnoseStorage.ts",
     "test-upload": "tsx scripts/testPhotoUpload.ts",
     "setup-storage-policies": "tsx scripts/setupStoragePolicies.ts",
-    "check-upload": "tsx scripts/checkActualUpload.ts",
-    "deploy": "npm run build && wrangler pages deploy out"
+    "check-upload": "tsx scripts/checkActualUpload.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
@@ -37,7 +36,10 @@
     "@mui/material": "^6.0.0",
     "@supabase/supabase-js": "^2.57.2",
     "clsx": "^2.1.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
     "next": "15.3.1",
+    "node-fetch": "^3.3.2",
     "react": "^18.3.1",
     "react-admin": "^4.2.0",
     "react-dom": "^18.3.1",

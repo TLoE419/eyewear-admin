@@ -1,0 +1,18 @@
+{
+  "name": "eyewear-photo-api",
+  "version": "1.0.0",
+  "description": "照片 API 服務器 - 為 eyewear-web 提供照片 API",
+  "main": "photo-api-server.js",
+  "scripts": {
+    "start": "node photo-api-server.js",
+    "dev": "nodemon photo-api-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "@supabase/supabase-js": "^2.57.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
