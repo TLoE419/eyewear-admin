@@ -3,7 +3,7 @@
 import dynamic from "next/dynamic";
 
 // 動態導入 AdminSelector，禁用 SSR
-const AdminSelector = dynamic(() => import("./components/AdminSelector"), {
+const AdminSelector = dynamic(() => import("../components/AdminSelector"), {
   ssr: false,
   loading: () => (
     <div
@@ -20,8 +20,8 @@ const AdminSelector = dynamic(() => import("./components/AdminSelector"), {
   ),
 });
 
-const AdminApp = () => {
+const AdminPage = () => {
   return <AdminSelector />;
 };
 
-export default AdminApp;
+export default AdminPage;

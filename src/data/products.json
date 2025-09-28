@@ -1,0 +1,218 @@
+[
+  {
+    "id": "1",
+    "name": "Ray-Ban 經典款",
+    "brand": "Ray-Ban",
+    "category": "經典款式",
+    "image": "/Ray.Ban/RayBan_1.jpg",
+    "description": "經典 Ray-Ban 太陽眼鏡，時尚百搭。",
+    "inStock": true
+  },
+  {
+    "id": "2",
+    "name": "LINDBERG 輕量鏡框",
+    "brand": "LINDBERG",
+    "category": "輕量設計",
+    "image": "/LINDBERG/Lindberg_1.jpg",
+    "description": "極致輕量設計，舒適配戴。",
+    "inStock": true
+  },
+  {
+    "id": "3",
+    "name": "999.9 高彈性鏡框",
+    "brand": "9999",
+    "category": "創新科技",
+    "image": "/999.9/999.9_1.jpg",
+    "description": "高彈性材質，耐用不易變形。",
+    "inStock": true
+  },
+  {
+    "id": "4",
+    "name": "GUCCI 時尚鏡框 1",
+    "brand": "GUCCI",
+    "category": "奢華時尚",
+    "image": "/GUCCI/GUCCI_1.jpg",
+    "description": "奢華時尚設計，展現個人品味。",
+    "inStock": true
+  },
+  {
+    "id": "5",
+    "name": "GUCCI 時尚鏡框 2",
+    "brand": "GUCCI",
+    "category": "奢華時尚",
+    "image": "/GUCCI/GUCCI_2.jpg",
+    "description": "優雅設計，經典不敗。",
+    "inStock": true
+  },
+  {
+    "id": "6",
+    "name": "GUCCI 時尚鏡框 3",
+    "brand": "GUCCI",
+    "category": "奢華時尚",
+    "image": "/GUCCI/GUCCI_3.jpg",
+    "description": "現代時尚，引領潮流。",
+    "inStock": true
+  },
+  {
+    "id": "7",
+    "name": "GUCCI 時尚鏡框 4",
+    "brand": "GUCCI",
+    "category": "奢華時尚",
+    "image": "/GUCCI/GUCCI_4.jpg",
+    "description": "精緻工藝，品質保證。",
+    "inStock": true
+  },
+  {
+    "id": "8",
+    "name": "GUCCI 時尚鏡框 5",
+    "brand": "GUCCI",
+    "category": "奢華時尚",
+    "image": "/GUCCI/GUCCI_5.jpg",
+    "description": "獨特設計，彰顯個性。",
+    "inStock": true
+  },
+  {
+    "id": "9",
+    "name": "GUCCI 時尚鏡框 6",
+    "brand": "GUCCI",
+    "category": "奢華時尚",
+    "image": "/GUCCI/GUCCI_6.jpg",
+    "description": "經典款式，永不過時。",
+    "inStock": true
+  },
+  {
+    "id": "10",
+    "name": "GUCCI 時尚鏡框 7",
+    "brand": "GUCCI",
+    "category": "奢華時尚",
+    "image": "/GUCCI/GUCCI_7.jpg",
+    "description": "時尚前衛，引領風潮。",
+    "inStock": true
+  },
+  {
+    "id": "11",
+    "name": "BVLGARI 精品鏡框 1",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_1.jpg",
+    "description": "義大利精品工藝，優雅設計。",
+    "inStock": true
+  },
+  {
+    "id": "12",
+    "name": "BVLGARI 精品鏡框 2",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_2.jpg",
+    "description": "奢華體驗，尊貴享受。",
+    "inStock": true
+  },
+  {
+    "id": "13",
+    "name": "BVLGARI 精品鏡框 3",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_3.jpg",
+    "description": "精緻工藝，完美細節。",
+    "inStock": true
+  },
+  {
+    "id": "14",
+    "name": "BVLGARI 精品鏡框 4",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_4.jpg",
+    "description": "經典設計，永恆魅力。",
+    "inStock": true
+  },
+  {
+    "id": "15",
+    "name": "BVLGARI 精品鏡框 5",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_5.jpg",
+    "description": "優雅氣質，非凡品味。",
+    "inStock": true
+  },
+  {
+    "id": "16",
+    "name": "BVLGARI 精品鏡框 6",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_6.jpg",
+    "description": "時尚設計，引領潮流。",
+    "inStock": true
+  },
+  {
+    "id": "17",
+    "name": "BVLGARI 精品鏡框 7",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_7.jpg",
+    "description": "精緻美學，藝術氣息。",
+    "inStock": true
+  },
+  {
+    "id": "18",
+    "name": "BVLGARI 精品鏡框 8",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_8.jpg",
+    "description": "現代設計，前衛創新。",
+    "inStock": true
+  },
+  {
+    "id": "19",
+    "name": "BVLGARI 精品鏡框 9",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_9.jpg",
+    "description": "經典款式，永不過時。",
+    "inStock": true
+  },
+  {
+    "id": "20",
+    "name": "BVLGARI 精品鏡框 10",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_10.jpg",
+    "description": "優雅設計，彰顯品味。",
+    "inStock": true
+  },
+  {
+    "id": "21",
+    "name": "BVLGARI 精品鏡框 11",
+    "brand": "BVLGARI",
+    "category": "精品工藝",
+    "image": "/BVLGARI/BVLGARI_11.jpg",
+    "description": "精緻工藝，品質保證。",
+    "inStock": true
+  },
+  {
+    "id": "22",
+    "name": "MONTBLANC 商務鏡框 1",
+    "brand": "MONTBLANC",
+    "category": "商務精英",
+    "image": "/MONTBLANC/MONTBLANC_1.jpg",
+    "description": "商務精英首選，專業形象。",
+    "inStock": true
+  },
+  {
+    "id": "23",
+    "name": "MONTBLANC 商務鏡框 2",
+    "brand": "MONTBLANC",
+    "category": "商務精英",
+    "image": "/MONTBLANC/MONTBLANC_2.jpg",
+    "description": "經典商務風格，穩重可靠。",
+    "inStock": true
+  },
+  {
+    "id": "24",
+    "name": "MONTBLANC 商務鏡框 3",
+    "brand": "MONTBLANC",
+    "category": "商務精英",
+    "image": "/MONTBLANC/MONTBLANC_3.jpg",
+    "description": "現代商務設計，時尚專業。",
+    "inStock": true
+  }
+] 
