@@ -1,0 +1,8 @@
+# Cloudflare Pages 配置
+name = "eyewear-admin"
+pages_build_output_dir = "out"
+
+# 如果需要部署 Cloudflare Worker，請使用以下配置：
+# name = "eyewear-admin-api"
+# main = "cloudflare-worker.js"
+# compatibility_date = "2023-09-28"

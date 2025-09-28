@@ -8,10 +8,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "deploy": "npm run build && wrangler pages deploy out",
     "init-supabase": "tsx scripts/initSupabase.ts",
     "setup-supabase": "tsx scripts/setupSupabase.ts",
     "fix-supabase": "tsx scripts/fixSupabaseSchema.ts",
-    "check-supabase": "tsx scripts/checkSupabaseTables.ts",
+    "check-supabase": "tsx scripts/checkSupabaseSetup.ts",
     "upload-data": "tsx scripts/uploadDataWithoutInStock.ts",
     "test-provider": "tsx scripts/testDataProvider.ts",
     "test-client": "tsx scripts/testClientProvider.ts",
@@ -23,7 +24,6 @@
     "test-photos": "tsx scripts/testPhotoManagement.ts",
     "test-photos-simple": "tsx scripts/simplePhotoTest.ts",
     "create-photos-bucket": "tsx scripts/createPhotosBucket.ts",
-    "check-supabase": "tsx scripts/checkSupabaseSetup.ts",
     "diagnose-storage": "tsx scripts/diagnoseStorage.ts",
     "test-upload": "tsx scripts/testPhotoUpload.ts",
     "setup-storage-policies": "tsx scripts/setupStoragePolicies.ts",
@@ -58,6 +58,6 @@
     "tailwindcss": "^4.1.13",
     "tsx": "^4.20.5",
     "typescript": "^5",
-    "wrangler": "^4.35.0"
+    "wrangler": "^4.40.2"
   }
 }
