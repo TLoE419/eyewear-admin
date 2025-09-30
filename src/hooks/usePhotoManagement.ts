@@ -20,7 +20,9 @@ export const usePhotos = () => {
       try {
         setLoading(true);
         // 通過 Cloudflare Worker 獲取照片
-        const response = await fetch("https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos");
+        const response = await fetch(
+          "https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos"
+        );
         if (!response.ok) {
           throw new Error("Failed to fetch photos");
         }
@@ -90,13 +92,18 @@ export const usePhotoUpload = () => {
       if (photoData.subtitle) formData.append("subtitle", photoData.subtitle);
       if (photoData.文字欄1) formData.append("文字欄1", photoData.文字欄1);
       if (photoData.文字欄2) formData.append("文字欄2", photoData.文字欄2);
-      if (photoData.display_order) formData.append("display_order", photoData.display_order.toString());
-      if (photoData.is_active !== undefined) formData.append("is_active", photoData.is_active.toString());
+      if (photoData.display_order)
+        formData.append("display_order", photoData.display_order.toString());
+      if (photoData.is_active !== undefined)
+        formData.append("is_active", photoData.is_active.toString());
 
-      const response = await fetch("https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos", {
-        method: "POST",
-        body: formData,
-      });
+      const response = await fetch(
+        "https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to upload photo");
@@ -125,13 +132,16 @@ export const usePhotoUpdate = () => {
       setError(null);
 
       // 通過 Cloudflare Worker 更新照片
-      const response = await fetch(`https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos/${id}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(updates),
-      });
+      const response = await fetch(
+        `https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos/${id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updates),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to update photo");
@@ -160,9 +170,12 @@ export const usePhotoDelete = () => {
       setError(null);
 
       // 通過 Cloudflare Worker 刪除照片
-      const response = await fetch(`https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos/${id}`, {
-        method: "DELETE",
-      });
+      const response = await fetch(
+        `https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos/${id}`,
+        {
+          method: "DELETE",
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to delete photo");

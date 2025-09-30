@@ -5,10 +5,10 @@ publish = "out"
 [build.environment]
 NODE_VERSION = "18"
 
-# 環境變數（在 Cloudflare Pages 控制台設置）
-# NEXT_PUBLIC_SUPABASE_URL = "your-supabase-url"
-# NEXT_PUBLIC_SUPABASE_ANON_KEY = "your-supabase-anon-key"
-# SUPABASE_SERVICE_ROLE_KEY = "your-service-role-key"
+# 環境變數
+NEXT_PUBLIC_SUPABASE_URL = "https://avzngmdgeisolmnomegs.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF2em5nbWRnZWlzb2xtbm9tZWdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyNjAyOTksImV4cCI6MjA3MjgzNjI5OX0.CO5o7iWv2J8PfnF29bTNg0O0GKLw1q2tDikukgeIcww"
+SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF2em5nbWRnZWlzb2xtbm9tZWdzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NzI2MDI5OSwiZXhwIjoyMDcyODM2Mjk5fQ.YourServiceRoleKey"
 
 # 重定向規則
 [[redirects]]
