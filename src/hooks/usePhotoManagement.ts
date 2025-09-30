@@ -7,7 +7,7 @@ import {
   PhotoUpload,
   PHOTO_API_ENDPOINTS,
 } from "@/lib/photoManagement";
-import { PhotoApi } from "@/lib/photoApi";
+// import { PhotoApi } from "@/lib/photoApi"; // 不再需要，直接使用 Cloudflare Worker
 
 // 獲取所有照片
 export const usePhotos = () => {
@@ -19,9 +19,13 @@ export const usePhotos = () => {
     const fetchPhotos = async () => {
       try {
         setLoading(true);
-        // 直接使用 PhotoApi 獲取照片
-        const response = await PhotoApi.getPhotos();
-        setPhotos(response.data as Photo[]);
+        // 通過 Cloudflare Worker 獲取照片
+        const response = await fetch("https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos");
+        if (!response.ok) {
+          throw new Error("Failed to fetch photos");
+        }
+        const data = await response.json();
+        setPhotos(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Unknown error");
       } finally {
@@ -78,25 +82,27 @@ export const usePhotoUpload = () => {
       setUploading(true);
       setError(null);
 
-      // 直接使用 PhotoApi 上傳圖片到 Supabase Storage
-      const imageUrl = await PhotoApi.uploadImage(file, photoData.category);
-      
-      // 創建照片記錄並保存到資料庫
-      const photoRecord = {
-        image_url: imageUrl,
-        category: photoData.category,
-        title: photoData.title || undefined,
-        subtitle: photoData.subtitle || undefined,
-        文字欄1: photoData.文字欄1 || undefined,
-        文字欄2: photoData.文字欄2 || undefined,
-        display_order: photoData.display_order || 0,
-        is_active: photoData.is_active !== undefined ? photoData.is_active : true,
-      };
+      // 通過 Cloudflare Worker 上傳照片
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("category", photoData.category);
+      if (photoData.title) formData.append("title", photoData.title);
+      if (photoData.subtitle) formData.append("subtitle", photoData.subtitle);
+      if (photoData.文字欄1) formData.append("文字欄1", photoData.文字欄1);
+      if (photoData.文字欄2) formData.append("文字欄2", photoData.文字欄2);
+      if (photoData.display_order) formData.append("display_order", photoData.display_order.toString());
+      if (photoData.is_active !== undefined) formData.append("is_active", photoData.is_active.toString());
 
-      // 使用 PhotoApi 創建照片記錄
-      const newPhoto = await PhotoApi.createPhoto(photoRecord);
-      
-      return newPhoto;
+      const response = await fetch("https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to upload photo");
+      }
+
+      return await response.json();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Upload failed");
       throw err;
@@ -118,10 +124,20 @@ export const usePhotoUpdate = () => {
       setUpdating(true);
       setError(null);
 
-      // 直接使用 PhotoApi 更新照片
-      const updatedPhoto = await PhotoApi.updatePhoto(id, updates);
-      
-      return updatedPhoto;
+      // 通過 Cloudflare Worker 更新照片
+      const response = await fetch(`https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos/${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updates),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update photo");
+      }
+
+      return await response.json();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Update failed");
       throw err;
@@ -143,9 +159,15 @@ export const usePhotoDelete = () => {
       setDeleting(true);
       setError(null);
 
-      // 直接使用 PhotoApi 刪除照片
-      await PhotoApi.deletePhoto(id);
-      
+      // 通過 Cloudflare Worker 刪除照片
+      const response = await fetch(`https://eyewear-photo-api.tloemizuchizu.workers.dev/api/photos/${id}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to delete photo");
+      }
+
       return true;
     } catch (err) {
       setError(err instanceof Error ? err.message : "Delete failed");
