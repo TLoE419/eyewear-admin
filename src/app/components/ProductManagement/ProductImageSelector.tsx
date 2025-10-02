@@ -14,7 +14,7 @@ import {
   CloudUpload as UploadIcon,
   Visibility as ViewIcon,
 } from "@mui/icons-material";
-import { usePhotoManagement } from "@/hooks/usePhotoManagement";
+import { usePhotoUpload } from "@/hooks/usePhotoManagement";
 import { PhotoCategory } from "@/lib/photoManagement";
 
 interface ProductImageSelectorProps {
@@ -33,7 +33,7 @@ export const ProductImageSelector: React.FC<ProductImageSelectorProps> = ({
   const [uploading, setUploading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const { uploadImage } = usePhotoManagement();
+  const { uploadPhoto } = usePhotoUpload();
 
   const handleImageChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -58,15 +58,28 @@ export const ProductImageSelector: React.FC<ProductImageSelectorProps> = ({
     // 自動上傳
     try {
       setUploading(true);
-      const imageUrl = await uploadImage(file, PhotoCategory.PRODUCT_PHOTO);
-      onImageChange(imageUrl);
+      const photoData = {
+        category: PhotoCategory.PRODUCT_PHOTO,
+        title: "產品圖片",
+        subtitle: "產品圖片",
+        display_order: 0,
+        is_active: true,
+      };
       
-      // 清理預覽
-      if (newImagePreview) {
-        URL.revokeObjectURL(newImagePreview);
+      const uploadedPhoto = await uploadPhoto(photoData, file);
+      
+      if (uploadedPhoto?.image_url) {
+        onImageChange(uploadedPhoto.image_url);
+        
+        // 清理預覽
+        if (newImagePreview) {
+          URL.revokeObjectURL(newImagePreview);
+        }
+        setNewImageFile(null);
+        setNewImagePreview(null);
+      } else {
+        throw new Error("上傳失敗，未返回圖片 URL");
       }
-      setNewImageFile(null);
-      setNewImagePreview(null);
     } catch (err) {
       setError(err instanceof Error ? err.message : "上傳失敗");
     } finally {
