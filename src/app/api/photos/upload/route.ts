@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
-import { Photo } from "@/lib/photoManagement";
+import { Photo, PhotoCategory } from "@/lib/photoManagement";
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseKey =
@@ -66,11 +66,11 @@ export async function POST(request: NextRequest) {
     // 儲存照片資訊到資料庫
     const photoData: Omit<Photo, "id" | "created_at" | "updated_at"> = {
       image_url: publicUrl,
-      category: formData.get("category") as string,
-      title: (formData.get("title") as string) || null,
-      subtitle: (formData.get("subtitle") as string) || null,
-      brand_name: (formData.get("brand_name") as string) || null,
-      store_name: (formData.get("store_name") as string) || null,
+      category: formData.get("category") as PhotoCategory,
+      title: (formData.get("title") as string) || undefined,
+      subtitle: (formData.get("subtitle") as string) || undefined,
+      brand_name: (formData.get("brand_name") as string) || undefined,
+      store_name: (formData.get("store_name") as string) || undefined,
       display_order: parseInt(formData.get("display_order") as string) || 0,
       is_active: formData.get("is_active") === "true",
     };
