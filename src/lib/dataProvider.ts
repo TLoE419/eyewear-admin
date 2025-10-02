@@ -1,16 +1,6 @@
 import { DataProvider } from "react-admin";
 import { dataStore } from "./dataStore";
 
-// 模擬API端點 - 目前未使用
-// const API_URL = "/api";
-
-// const httpClient = (url: string, options: Record<string, unknown> = {}) => {
-//   if (!options.headers) {
-//     options.headers = new Headers({ Accept: "application/json" });
-//   }
-//   return fetchUtils.fetchJson(url, options);
-// };
-
 export const dataProvider: DataProvider = {
   getList: (resource, params) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,8 +8,6 @@ export const dataProvider: DataProvider = {
 
     if (resource === "products") {
       data = dataStore.products.getAll();
-    } else if (resource === "lenses") {
-      data = dataStore.lenses.getAll();
     } else {
       return Promise.reject(new Error("Unknown resource"));
     }
@@ -68,8 +56,6 @@ export const dataProvider: DataProvider = {
 
     if (resource === "products") {
       data = dataStore.products.getById(params.id.toString());
-    } else if (resource === "lenses") {
-      data = dataStore.lenses.getById(params.id.toString());
     } else {
       return Promise.reject(new Error("Unknown resource"));
     }
@@ -88,8 +74,6 @@ export const dataProvider: DataProvider = {
 
     if (resource === "products") {
       data = dataStore.products.getAll();
-    } else if (resource === "lenses") {
-      data = dataStore.lenses.getAll();
     } else {
       return Promise.reject(new Error("Unknown resource"));
     }
@@ -113,8 +97,6 @@ export const dataProvider: DataProvider = {
 
     if (resource === "products") {
       newRecord = dataStore.products.create(params.data);
-    } else if (resource === "lenses") {
-      newRecord = dataStore.lenses.create(params.data);
     } else {
       return Promise.reject(new Error("Unknown resource"));
     }
@@ -132,11 +114,6 @@ export const dataProvider: DataProvider = {
         params.id.toString(),
         params.data
       );
-    } else if (resource === "lenses") {
-      updatedRecord = dataStore.lenses.update(
-        params.id.toString(),
-        params.data
-      );
     } else {
       return Promise.reject(new Error("Unknown resource"));
     }
@@ -150,8 +127,6 @@ export const dataProvider: DataProvider = {
     const results = params.ids.map((id) => {
       if (resource === "products") {
         return dataStore.products.update(id.toString(), params.data);
-      } else if (resource === "lenses") {
-        return dataStore.lenses.update(id.toString(), params.data);
       }
       return null;
     });
@@ -165,8 +140,6 @@ export const dataProvider: DataProvider = {
 
     if (resource === "products") {
       deletedRecord = dataStore.products.delete(params.id.toString());
-    } else if (resource === "lenses") {
-      deletedRecord = dataStore.lenses.delete(params.id.toString());
     } else {
       return Promise.reject(new Error("Unknown resource"));
     }
@@ -180,8 +153,6 @@ export const dataProvider: DataProvider = {
     const results = params.ids.map((id) => {
       if (resource === "products") {
         return dataStore.products.delete(id.toString());
-      } else if (resource === "lenses") {
-        return dataStore.lenses.delete(id.toString());
       }
       return null;
     });

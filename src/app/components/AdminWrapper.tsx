@@ -4,7 +4,6 @@ import { Admin, Resource } from "react-admin";
 import { dataProvider } from "@/lib/dynamicDataProvider";
 import { authProvider } from "@/lib/authProvider";
 import { ProductList, ProductEdit, ProductCreate } from "./ProductManagement";
-import { LensList, LensEdit, LensCreate } from "./LensManagement";
 import {
   PhotoList,
   PhotoEdit,
@@ -44,13 +43,6 @@ const AdminWrapper = () => {
           edit={ProductEdit}
           create={ProductCreate}
           options={{ label: "產品管理" }}
-        />
-        <Resource
-          name="lenses"
-          list={LensList}
-          edit={LensEdit}
-          create={LensCreate}
-          options={{ label: "鏡片管理" }}
         />
         <Resource
           name="photos"
