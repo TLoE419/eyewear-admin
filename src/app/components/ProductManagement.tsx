@@ -48,7 +48,7 @@ export const ProductList = () => (
       <TextField source="name" label="產品名稱" />
       <TextField source="brand" label="品牌" />
       <ImageField
-        source="image"
+        source="image_url"
         label="產品圖片"
         sx={{
           "& img": {
@@ -99,7 +99,7 @@ export const ProductEdit = () => (
         required
         helperText="例如：Ray-Ban、GUCCI、BVLGARI 等"
       />
-      <ProductImageField source="image" label="圖片路徑" />
+      <ProductImageField source="image_url" label="圖片路徑" />
       <TextInput
         source="description"
         label="產品描述"
@@ -147,7 +147,7 @@ export const ProductCreate = () => (
         required
         helperText="例如：Ray-Ban、GUCCI、BVLGARI 等"
       />
-      <ProductImageField source="image" label="圖片路徑" />
+      <ProductImageField source="image_url" label="圖片路徑" />
       <TextInput
         source="description"
         label="產品描述"
