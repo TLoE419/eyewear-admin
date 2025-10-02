@@ -1,0 +1,42 @@
+[
+  {
+    "id": "lens-1",
+    "name": "ZEISS",
+    "brand": "ZEISS",
+    "image": "/lenses/zeiss-clear.jpg",
+    "shortDescription": "德德國 ZEISS 蔡司創立於 1846 年，是全球光學領域領導品牌，鏡片以精準度、舒適度與耐用性著稱...",
+    "longDescription": "德國 ZEISS 蔡司創立於 1846 年，是全球光學領域領導品牌，鏡片以精準度、舒適度與耐用性著稱。結合先進鍍膜、防紫外線、防藍光與個人化設計，提供清晰穩定的視覺體驗。從日常閱讀、3C 使用到駕駛，蔡司鏡片皆能滿足不同需求，守護雙眼每一刻。"
+  },
+  {
+    "id": "lens-2",
+    "name": "依視路",
+    "brand": "依視路",
+    "image": "/lenses/essilor-diamond.jpg",
+    "shortDescription": "法國法國依視路（Essilor）創立於 1849 年，是全球最大眼鏡鏡片製造商之一，以創新光學科技聞名...",
+    "longDescription": "法國依視路（Essilor）創立於 1849 年，是全球最大眼鏡鏡片製造商之一，以創新光學科技聞名。依視路鏡片涵蓋單光、漸進多焦點、防藍光、防紫外線與變色等多元選擇，並透過精準度數與個人化設計，提供清晰、舒適、自然的視覺體驗。無論閱讀、戶外或數位生活，依視路都致力守護你的雙眼健康。"
+  },
+  {
+    "id": "lens-3",
+    "name": "HOYA",
+    "brand": "HOYA",
+    "image": "/lenses/hoya-progressive.jpg",
+    "shortDescription": "日本 HOYA 創立於 1941 年，為全球光學與醫療科技領導品牌之一...",
+    "longDescription": "日本 HOYA 創立於 1941 年，為全球光學與醫療科技領導品牌之一。HOYA 鏡片以輕薄、高透光與精密加工聞名，並具備防紫外線、防藍光與高耐刮等鍍膜技術。從日常用眼、長時間 3C 使用到專業需求，HOYA 提供多樣化鏡片方案，為雙眼帶來清晰舒適的視覺享受。"
+  },
+  {
+    "id": "lens-4",
+    "name": "TOKAI",
+    "brand": "TOKAI",
+    "image": "/lenses/rodenstock-photochromic.jpg",
+    "shortDescription": "日本東海光學（TOKAI）創立於 1939 年，以高端訂製鏡片聞名，是日本光學技術的代表之一...",
+    "longDescription": "日本東海光學（TOKAI）創立於 1939 年，以高端訂製鏡片聞名，是日本光學技術的代表之一。TOKAI 鏡片以超輕薄、高透光與精密加工著稱，並擁有防藍光、全時 UV 防護、變色與多層耐刮鍍膜等技術。其多樣化產品可依度數、臉型與生活需求量身訂製，為配戴者帶來清晰、舒適且優雅的視覺體驗。"
+  },
+  {
+    "id": "lens-5",
+    "name": "Nikon",
+    "brand": "Nikon",
+    "image": "/lenses/nikon-blue-cut.jpg",
+    "shortDescription": "日本 NIKON 依視路創立於 1917 年，源自精密光學與相機鏡頭技術，將頂級光學工藝延伸至眼鏡鏡片領域...",
+    "longDescription": "日本 NIKON 依視路創立於 1917 年，源自精密光學與相機鏡頭技術，將頂級光學工藝延伸至眼鏡鏡片領域。NIKON 鏡片以高解析度、色彩真實與輕薄舒適著稱，結合防藍光、全時 UV 防護、抗反光與耐刮鍍膜等技術，提供清晰穩定的視覺體驗。無論日常佩戴或專業需求，NIKON 都以精準光學守護你的雙眼。"
+  }
+]

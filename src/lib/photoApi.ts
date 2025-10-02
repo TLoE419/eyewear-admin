@@ -121,7 +121,9 @@ export class PhotoApi {
   }
 
   // 創建照片
-  static async createPhoto(photoData: CreatePhotoData): Promise<Photo> {
+  static async createPhoto(
+    photoData: Partial<CreatePhotoData>
+  ): Promise<Photo> {
     try {
       const { data, error } = await supabase
         .from("photos")

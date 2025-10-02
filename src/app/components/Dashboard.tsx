@@ -1,14 +1,7 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  Typography,
-  Box,
-  Chip,
-} from "@mui/material";
+import { Card, CardContent, CardHeader, Typography, Box } from "@mui/material";
 import { Grid } from "@mui/material";
 import { useGetList } from "react-admin";
-import { Inventory, ShoppingCart, PhotoLibrary } from "@mui/icons-material";
+import { Inventory, PhotoLibrary } from "@mui/icons-material";
 
 export const Dashboard = () => {
   const { data: products, isLoading: productsLoading } = useGetList("products");
@@ -16,9 +9,7 @@ export const Dashboard = () => {
 
   const totalProducts = products?.length || 0;
   const totalPhotos = photos?.length || 0;
-  const inStockProducts = products?.filter((p) => p.inStock).length || 0;
   const activePhotos = photos?.filter((p) => p.is_active).length || 0;
-  const outOfStockProducts = totalProducts - inStockProducts;
   const inactivePhotos = totalPhotos - activePhotos;
 
   return (
@@ -35,95 +26,148 @@ export const Dashboard = () => {
         歡迎使用後台管理系統！您可以在這裡管理所有產品和照片資料。
       </Typography>
 
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6} md={3}>
-          <Card sx={{ height: "100%" }}>
-            <CardHeader
-              avatar={<Inventory sx={{ color: "#1976d2" }} />}
-              title={
-                <Typography variant="h6" component="div">
+      {/* 主要統計卡片 - 左右對稱 */}
+      <Grid container spacing={4} sx={{ mb: 4 }}>
+        <Grid item xs={12} md={6}>
+          <Card
+            sx={{
+              height: "100%",
+              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              color: "#fff",
+              borderRadius: 3,
+              boxShadow: "0 8px 32px rgba(102, 126, 234, 0.3)",
+            }}
+          >
+            <CardContent sx={{ p: 4 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                <Box
+                  sx={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: "50%",
+                    backgroundColor: "rgba(255,255,255,0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mr: 3,
+                  }}
+                >
+                  <Inventory sx={{ fontSize: 30, color: "#fff" }} />
+                </Box>
+                <Box>
+                  <Typography
+                    variant="h4"
+                    sx={{ fontWeight: "bold", color: "#fff" }}
+                  >
+                    產品管理
+                  </Typography>
+                  <Typography variant="h6" sx={{ color: "#fff", opacity: 0.8 }}>
+                    眼鏡產品總計
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Box sx={{ textAlign: "center", mb: 3 }}>
+                <Typography
+                  variant="h1"
+                  sx={{ fontWeight: "bold", color: "#fff", mb: 1 }}
+                >
+                  {productsLoading ? "..." : totalProducts}
+                </Typography>
+                <Typography variant="h6" sx={{ color: "#fff", opacity: 0.8 }}>
                   總產品數
                 </Typography>
-              }
-              subheader="所有眼鏡產品總計"
-            />
-            <CardContent>
-              <Typography
-                variant="h3"
-                component="div"
-                sx={{
-                  fontWeight: "bold",
-                  color: "#1976d2",
-                  textAlign: "center",
-                }}
-              >
-                {productsLoading ? "載入中..." : totalProducts}
-              </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: 1,
-                  mt: 2,
-                }}
-              >
-                <Chip
-                  label={`有庫存: ${inStockProducts}`}
-                  color="success"
-                  size="small"
-                />
-                <Chip
-                  label={`缺貨: ${outOfStockProducts}`}
-                  color="error"
-                  size="small"
-                />
+              </Box>
+
+              <Box sx={{ textAlign: "center" }}>
+                <Typography variant="h6" sx={{ color: "#fff", opacity: 0.8 }}>
+                  所有產品均可管理
+                </Typography>
               </Box>
             </CardContent>
           </Card>
         </Grid>
 
+        <Grid item xs={12} md={6}>
+          <Card
+            sx={{
+              height: "100%",
+              background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+              color: "#fff",
+              borderRadius: 3,
+              boxShadow: "0 8px 32px rgba(240, 147, 251, 0.3)",
+            }}
+          >
+            <CardContent sx={{ p: 4 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                <Box
+                  sx={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: "50%",
+                    backgroundColor: "rgba(255,255,255,0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mr: 3,
+                  }}
+                >
+                  <PhotoLibrary sx={{ fontSize: 30, color: "#fff" }} />
+                </Box>
+                <Box>
+                  <Typography
+                    variant="h4"
+                    sx={{ fontWeight: "bold", color: "#fff" }}
+                  >
+                    照片管理
+                  </Typography>
+                  <Typography variant="h6" sx={{ color: "#fff", opacity: 0.8 }}>
+                    網站照片總計
+                  </Typography>
+                </Box>
+              </Box>
 
-        <Grid item xs={12} sm={6} md={3}>
-          <Card sx={{ height: "100%" }}>
-            <CardHeader
-              avatar={<PhotoLibrary sx={{ color: "#d32f2f" }} />}
-              title={
-                <Typography variant="h6" component="div">
+              <Box sx={{ textAlign: "center", mb: 3 }}>
+                <Typography
+                  variant="h1"
+                  sx={{ fontWeight: "bold", color: "#fff", mb: 1 }}
+                >
+                  {photosLoading ? "..." : totalPhotos}
+                </Typography>
+                <Typography variant="h6" sx={{ color: "#fff", opacity: 0.8 }}>
                   總照片數
                 </Typography>
-              }
-              subheader="所有照片總計"
-            />
-            <CardContent>
-              <Typography
-                variant="h3"
-                component="div"
-                sx={{
-                  fontWeight: "bold",
-                  color: "#d32f2f",
-                  textAlign: "center",
-                }}
-              >
-                {photosLoading ? "載入中..." : totalPhotos}
-              </Typography>
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: 1,
-                  mt: 2,
-                }}
-              >
-                <Chip
-                  label={`啟用: ${activePhotos}`}
-                  color="success"
-                  size="small"
-                />
-                <Chip
-                  label={`停用: ${inactivePhotos}`}
-                  color="error"
-                  size="small"
-                />
+              </Box>
+
+              <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography
+                    variant="h3"
+                    sx={{ fontWeight: "bold", color: "#fff" }}
+                  >
+                    {activePhotos}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{ color: "#fff", opacity: 0.8 }}
+                  >
+                    啟用中
+                  </Typography>
+                </Box>
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography
+                    variant="h3"
+                    sx={{ fontWeight: "bold", color: "#fff" }}
+                  >
+                    {inactivePhotos}
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    sx={{ color: "#fff", opacity: 0.8 }}
+                  >
+                    已停用
+                  </Typography>
+                </Box>
               </Box>
             </CardContent>
           </Card>
@@ -154,10 +198,10 @@ export const Dashboard = () => {
                   • 新增、編輯、刪除眼鏡產品
                 </Typography>
                 <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                  • 管理產品名稱、品牌、分類、圖片
+                  • 管理產品名稱、品牌、圖片
                 </Typography>
                 <Typography variant="body1" sx={{ marginBottom: 1 }}>
-                  • 設定產品庫存狀態
+                  • 上傳和管理產品圖片
                 </Typography>
                 <Typography variant="body1">
                   • 查看產品詳細描述和規格

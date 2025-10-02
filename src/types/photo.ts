@@ -3,7 +3,8 @@ export type PhotoCategory =
   | "image_slider"
   | "news_carousel"
   | "brand_logo"
-  | "store_photo";
+  | "store_photo"
+  | "product_photo";
 
 export interface Photo {
   id: string;
@@ -114,6 +115,15 @@ export const PHOTO_CATEGORIES: Record<PhotoCategory, CategoryInfo> = {
     name: "News Carousel 跑馬燈照片",
     description: "首頁新聞跑馬燈",
     maxCount: 15,
+    recommendedSize: "800x800",
+    supportedFormats: ["JPG", "PNG", "WebP"],
+    requiredFields: [],
+  },
+  product_photo: {
+    category: "product_photo",
+    name: "Product Photo 產品照片",
+    description: "產品展示照片",
+    maxCount: 100,
     recommendedSize: "800x800",
     supportedFormats: ["JPG", "PNG", "WebP"],
     requiredFields: [],

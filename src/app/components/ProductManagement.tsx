@@ -5,8 +5,6 @@ import {
   Edit,
   SimpleForm,
   TextInput,
-  BooleanField,
-  BooleanInput,
   Create,
   EditButton,
   DeleteButton,
@@ -15,7 +13,9 @@ import {
   CreateButton,
   ExportButton,
   FilterButton,
+  ImageField,
 } from "react-admin";
+import { ProductImageField } from "./ProductManagement/ProductImageField";
 
 // 產品列表組件
 export const ProductList = () => (
@@ -41,22 +41,25 @@ export const ProductList = () => (
         label="品牌"
         placeholder="搜尋品牌..."
       />,
-      <TextInput
-        key="category"
-        source="category"
-        label="分類"
-        placeholder="搜尋分類..."
-      />,
     ]}
   >
     <Datagrid>
       <TextField source="id" label="ID" />
       <TextField source="name" label="產品名稱" />
       <TextField source="brand" label="品牌" />
-      <TextField source="category" label="分類" />
-      <TextField source="image" label="圖片路徑" />
+      <ImageField
+        source="image"
+        label="產品圖片"
+        sx={{
+          "& img": {
+            width: 60,
+            height: 60,
+            objectFit: "cover",
+            borderRadius: 1,
+          },
+        }}
+      />
       <TextField source="description" label="描述" />
-      <BooleanField source="inStock" label="庫存狀態" />
       <TextField source="created_at" label="創建時間" />
       <TextField source="updated_at" label="更新時間" />
       <EditButton label="編輯" />
@@ -96,29 +99,13 @@ export const ProductEdit = () => (
         required
         helperText="例如：Ray-Ban、GUCCI、BVLGARI 等"
       />
-      <TextInput
-        source="category"
-        label="分類"
-        required
-        helperText="例如：太陽眼鏡、光學眼鏡、運動眼鏡等"
-      />
-      <TextInput
-        source="image"
-        label="圖片路徑"
-        required
-        helperText="產品圖片的檔案路徑，例如：/products/rayban-001.jpg"
-      />
+      <ProductImageField source="image" label="圖片路徑" />
       <TextInput
         source="description"
         label="產品描述"
         multiline
         rows={3}
         helperText="詳細描述產品的特色、材質、適用場合等"
-      />
-      <BooleanInput
-        source="inStock"
-        label="庫存狀態"
-        helperText="勾選表示有庫存，可立即銷售"
       />
       <TextInput
         source="created_at"
@@ -160,29 +147,13 @@ export const ProductCreate = () => (
         required
         helperText="例如：Ray-Ban、GUCCI、BVLGARI 等"
       />
-      <TextInput
-        source="category"
-        label="分類"
-        required
-        helperText="例如：太陽眼鏡、光學眼鏡、運動眼鏡等"
-      />
-      <TextInput
-        source="image"
-        label="圖片路徑"
-        required
-        helperText="產品圖片的檔案路徑，例如：/products/rayban-001.jpg"
-      />
+      <ProductImageField source="image" label="圖片路徑" />
       <TextInput
         source="description"
         label="產品描述"
         multiline
         rows={3}
         helperText="詳細描述產品的特色、材質、適用場合等"
-      />
-      <BooleanInput
-        source="inStock"
-        label="庫存狀態"
-        helperText="勾選表示有庫存，可立即銷售"
       />
     </SimpleForm>
   </Create>

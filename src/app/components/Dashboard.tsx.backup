@@ -1,0 +1,340 @@
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  Typography,
+  Box,
+  Chip,
+} from "@mui/material";
+import { Grid } from "@mui/material";
+import { useGetList } from "react-admin";
+import { Inventory, ShoppingCart, PhotoLibrary } from "@mui/icons-material";
+
+export const Dashboard = () => {
+  const { data: products, isLoading: productsLoading } = useGetList("products");
+  const { data: photos, isLoading: photosLoading } = useGetList("photos");
+
+  const totalProducts = products?.length || 0;
+  const totalPhotos = photos?.length || 0;
+  const inStockProducts = products?.filter((p) => p.inStock).length || 0;
+  const activePhotos = photos?.filter((p) => p.is_active).length || 0;
+  const outOfStockProducts = totalProducts - inStockProducts;
+  const inactivePhotos = totalPhotos - activePhotos;
+
+  return (
+    <Box sx={{ padding: 3 }}>
+      <Typography
+        variant="h4"
+        component="h1"
+        sx={{ marginBottom: 3, color: "#1976d2", fontWeight: "bold" }}
+      >
+        視寶眼鏡後台管理系統
+      </Typography>
+
+      <Typography variant="h6" sx={{ marginBottom: 3, color: "#666" }}>
+        歡迎使用後台管理系統！您可以在這裡管理所有產品和照片資料。
+      </Typography>
+
+      {/* 主要統計卡片 - 左右對稱 */}
+      <Grid container spacing={4} sx={{ mb: 4 }}>
+        <Grid item xs={12} md={6}>
+          <Card 
+            sx={{ 
+              height: "100%", 
+              background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+              color: "#fff",
+              borderRadius: 3,
+              boxShadow: "0 8px 32px rgba(102, 126, 234, 0.3)"
+            }}
+          >
+            <CardContent sx={{ p: 4 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                <Box
+                  sx={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: "50%",
+                    backgroundColor: "rgba(255,255,255,0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mr: 3
+                  }}
+                >
+                  <Inventory sx={{ fontSize: 30, color: "#fff" }} />
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff" }}>
+                    產品管理
+                  </Typography>
+                  <Typography variant="h6" sx={{ color: "#fff", opacity: 0.8 }}>
+                    眼鏡產品總計
+                  </Typography>
+                </Box>
+              </Box>
+              
+              <Box sx={{ textAlign: "center", mb: 3 }}>
+                <Typography variant="h1" sx={{ fontWeight: "bold", color: "#fff", mb: 1 }}>
+                  {productsLoading ? "..." : totalProducts}
+                </Typography>
+                <Typography variant="h6" sx={{ color: "#fff", opacity: 0.8 }}>
+                  總產品數
+                </Typography>
+              </Box>
+
+              <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography variant="h3" sx={{ fontWeight: "bold", color: "#fff" }}>
+                    {inStockProducts}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: "#fff", opacity: 0.8 }}>
+                    有庫存
+                  </Typography>
+                </Box>
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography variant="h3" sx={{ fontWeight: "bold", color: "#fff" }}>
+                    {outOfStockProducts}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: "#fff", opacity: 0.8 }}>
+                    缺貨
+                  </Typography>
+                </Box>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <Card 
+            sx={{ 
+              height: "100%", 
+              background: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+              color: "#fff",
+              borderRadius: 3,
+              boxShadow: "0 8px 32px rgba(240, 147, 251, 0.3)"
+            }}
+          >
+            <CardContent sx={{ p: 4 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                <Box
+                  sx={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: "50%",
+                    backgroundColor: "rgba(255,255,255,0.2)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mr: 3
+                  }}
+                >
+                  <PhotoLibrary sx={{ fontSize: 30, color: "#fff" }} />
+                </Box>
+                <Box>
+                  <Typography variant="h4" sx={{ fontWeight: "bold", color: "#fff" }}>
+                    照片管理
+                  </Typography>
+                  <Typography variant="h6" sx={{ color: "#fff", opacity: 0.8 }}>
+                    網站照片總計
+                  </Typography>
+                </Box>
+              </Box>
+              
+              <Box sx={{ textAlign: "center", mb: 3 }}>
+                <Typography variant="h1" sx={{ fontWeight: "bold", color: "#fff", mb: 1 }}>
+                  {photosLoading ? "..." : totalPhotos}
+                </Typography>
+                <Typography variant="h6" sx={{ color: "#fff", opacity: 0.8 }}>
+                  總照片數
+                </Typography>
+              </Box>
+
+              <Box sx={{ display: "flex", justifyContent: "space-around" }}>
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography variant="h3" sx={{ fontWeight: "bold", color: "#fff" }}>
+                    {activePhotos}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: "#fff", opacity: 0.8 }}>
+                    啟用中
+                  </Typography>
+                </Box>
+                <Box sx={{ textAlign: "center" }}>
+                  <Typography variant="h3" sx={{ fontWeight: "bold", color: "#fff" }}>
+                    {inactivePhotos}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: "#fff", opacity: 0.8 }}>
+                    已停用
+                  </Typography>
+                </Box>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+
+      {/* 功能說明卡片 - 左右對稱 */}
+      <Grid container spacing={4}>
+        <Grid item xs={12} md={6}>
+          <Card 
+            sx={{ 
+              height: "100%",
+              borderRadius: 3,
+              border: "2px solid #e3f2fd",
+              "&:hover": {
+                boxShadow: "0 8px 32px rgba(25, 118, 210, 0.15)",
+                transform: "translateY(-2px)",
+                transition: "all 0.3s ease"
+              }
+            }}
+          >
+            <CardContent sx={{ p: 4 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                <Box
+                  sx={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: "50%",
+                    backgroundColor: "#e3f2fd",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mr: 2
+                  }}
+                >
+                  <Inventory sx={{ fontSize: 24, color: "#1976d2" }} />
+                </Box>
+                <Typography variant="h5" sx={{ color: "#1976d2", fontWeight: "bold" }}>
+                  📦 產品管理
+                </Typography>
+              </Box>
+              
+              <Box sx={{ pl: 1 }}>
+                <Typography variant="body1" sx={{ marginBottom: 2, color: "#555" }}>
+                  • 新增、編輯、刪除眼鏡產品
+                </Typography>
+                <Typography variant="body1" sx={{ marginBottom: 2, color: "#555" }}>
+                  • 管理產品名稱、品牌、分類、圖片
+                </Typography>
+                <Typography variant="body1" sx={{ marginBottom: 2, color: "#555" }}>
+                  • 設定產品庫存狀態
+                </Typography>
+                <Typography variant="body1" sx={{ marginBottom: 3, color: "#555" }}>
+                  • 查看產品詳細描述和規格
+                </Typography>
+              </Box>
+
+              <Box 
+                sx={{ 
+                  p: 2, 
+                  backgroundColor: "#f8f9ff", 
+                  borderRadius: 2,
+                  border: "1px solid #e3f2fd"
+                }}
+              >
+                <Typography variant="h6" sx={{ color: "#1976d2", marginBottom: 1, fontWeight: "bold" }}>
+                  📏 建議圖片尺寸
+                </Typography>
+                <Typography variant="body2" sx={{ color: "#666" }}>
+                  產品圖片：800×800px (正方形)<br/>
+                  格式：JPG、PNG<br/>
+                  檔案大小：< 2MB
+                </Typography>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+
+        <Grid item xs={12} md={6}>
+          <Card 
+            sx={{ 
+              height: "100%",
+              borderRadius: 3,
+              border: "2px solid #fce4ec",
+              "&:hover": {
+                boxShadow: "0 8px 32px rgba(240, 147, 251, 0.15)",
+                transform: "translateY(-2px)",
+                transition: "all 0.3s ease"
+              }
+            }}
+          >
+            <CardContent sx={{ p: 4 }}>
+              <Box sx={{ display: "flex", alignItems: "center", mb: 3 }}>
+                <Box
+                  sx={{
+                    width: 50,
+                    height: 50,
+                    borderRadius: "50%",
+                    backgroundColor: "#fce4ec",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    mr: 2
+                  }}
+                >
+                  <PhotoLibrary sx={{ fontSize: 24, color: "#e91e63" }} />
+                </Box>
+                <Typography variant="h5" sx={{ color: "#e91e63", fontWeight: "bold" }}>
+                  📸 照片管理
+                </Typography>
+              </Box>
+              
+              <Box sx={{ pl: 1 }}>
+                <Typography variant="body1" sx={{ marginBottom: 2, color: "#555" }}>
+                  • 管理首頁輪播照片
+                </Typography>
+                <Typography variant="body1" sx={{ marginBottom: 2, color: "#555" }}>
+                  • 上傳品牌 Logo 和分店照片
+                </Typography>
+                <Typography variant="body1" sx={{ marginBottom: 2, color: "#555" }}>
+                  • 設定照片顯示順序和狀態
+                </Typography>
+                <Typography variant="body1" sx={{ marginBottom: 3, color: "#555" }}>
+                  • 分類管理各種用途的照片
+                </Typography>
+              </Box>
+
+              <Box 
+                sx={{ 
+                  p: 2, 
+                  backgroundColor: "#fef7ff", 
+                  borderRadius: 2,
+                  border: "1px solid #fce4ec"
+                }}
+              >
+                <Typography variant="h6" sx={{ color: "#e91e63", marginBottom: 1, fontWeight: "bold" }}>
+                  📏 建議圖片尺寸
+                </Typography>
+                <Typography variant="body2" sx={{ color: "#666" }}>
+                  首頁輪播：1920×800px<br/>
+                  品牌 Logo：400×200px<br/>
+                  分店照片：1200×600px<br/>
+                  格式：JPG、PNG，檔案大小：< 5MB
+                </Typography>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
+
+      {/* 提示訊息 */}
+      <Box sx={{ mt: 4 }}>
+        <Card 
+          sx={{ 
+            borderRadius: 3,
+            background: "linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)",
+            border: "1px solid #dee2e6"
+          }}
+        >
+          <CardContent sx={{ p: 3, textAlign: "center" }}>
+            <Typography variant="h6" sx={{ color: "#495057", fontWeight: "bold", mb: 1 }}>
+              💡 系統提示
+            </Typography>
+            <Typography variant="body1" sx={{ color: "#6c757d" }}>
+              所有資料變更都會即時同步到前台網站，確保客戶看到最新的產品資訊。
+            </Typography>
+          </CardContent>
+        </Card>
+      </Box>
+    </Box>
+  );
+};

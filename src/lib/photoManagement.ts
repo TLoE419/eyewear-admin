@@ -6,6 +6,7 @@ export enum PhotoCategory {
   NEWS_CAROUSEL = "news_carousel",
   BRAND_LOGO = "brand_logo",
   STORE_PHOTO = "store_photo",
+  PRODUCT_PHOTO = "product_photo",
 }
 
 export interface Photo {
