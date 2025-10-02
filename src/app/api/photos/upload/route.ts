@@ -69,8 +69,6 @@ export async function POST(request: NextRequest) {
       category: formData.get("category") as PhotoCategory,
       title: (formData.get("title") as string) || undefined,
       subtitle: (formData.get("subtitle") as string) || undefined,
-      brand_name: (formData.get("brand_name") as string) || undefined,
-      store_name: (formData.get("store_name") as string) || undefined,
       display_order: parseInt(formData.get("display_order") as string) || 0,
       is_active: formData.get("is_active") === "true",
     };
