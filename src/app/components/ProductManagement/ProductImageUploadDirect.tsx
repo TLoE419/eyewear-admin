@@ -68,9 +68,9 @@ export const ProductImageUploadDirect: React.FC<ProductImageUploadDirectProps> =
       const fileName = `product-${Date.now()}-${Math.random().toString(36).substring(2)}.${fileExt}`;
       const filePath = `products/${fileName}`;
 
-      // 上傳到 Supabase Storage
+      // 上傳到 Supabase Storage (使用 photos bucket 的 products 路徑)
       const { error: uploadError } = await supabase.storage
-        .from("products") // 使用 products bucket
+        .from("photos") // 使用 photos bucket
         .upload(filePath, file, {
           cacheControl: "3600",
           upsert: false,
@@ -82,7 +82,7 @@ export const ProductImageUploadDirect: React.FC<ProductImageUploadDirectProps> =
 
       // 獲取公開 URL
       const { data: { publicUrl } } = supabase.storage
-        .from("products")
+        .from("photos")
         .getPublicUrl(filePath);
 
       // 更新產品圖片 URL
