@@ -82,43 +82,6 @@ export const Dashboard = () => {
           </Card>
         </Grid>
 
-        <Grid item xs={12} sm={6} md={3}>
-          <Card sx={{ height: "100%" }}>
-            <CardHeader
-              avatar={<ShoppingCart sx={{ color: "#f57c00" }} />}
-              title={
-                <Typography variant="h6" component="div">
-                  有庫存產品
-                </Typography>
-              }
-              subheader="可立即銷售的產品"
-            />
-            <CardContent>
-              <Typography
-                variant="h3"
-                component="div"
-                sx={{
-                  fontWeight: "bold",
-                  color: "#f57c00",
-                  textAlign: "center",
-                }}
-              >
-                {productsLoading ? "載入中..." : inStockProducts}
-              </Typography>
-              <Typography
-                variant="body2"
-                color="text.secondary"
-                sx={{ textAlign: "center", mt: 1 }}
-              >
-                佔總產品{" "}
-                {totalProducts > 0
-                  ? Math.round((inStockProducts / totalProducts) * 100)
-                  : 0}
-                %
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
 
         <Grid item xs={12} sm={6} md={3}>
           <Card sx={{ height: "100%" }}>
