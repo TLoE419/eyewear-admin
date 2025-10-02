@@ -2,15 +2,23 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Photo, PhotoCategory } from "@/lib/photoManagement";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ||
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
+function createSupabaseClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey =
+    process.env.SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Supabase environment variables are not set");
+  }
+
+  return createClient(supabaseUrl, supabaseKey);
+}
 
 // POST /api/photos/upload - 上傳照片（與主 route.ts 相同，但專門用於上傳）
 export async function POST(request: NextRequest) {
   try {
+    const supabase = createSupabaseClient();
     const formData = await request.formData();
     const file = formData.get("file") as File;
 

@@ -2,16 +2,24 @@ import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@supabase/supabase-js";
 import { Photo, PhotoCategory } from "@/lib/photoManagement";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey =
-  process.env.SUPABASE_SERVICE_ROLE_KEY ||
-  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
+function createSupabaseClient() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey =
+    process.env.SUPABASE_SERVICE_ROLE_KEY ||
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error("Supabase environment variables are not set");
+  }
+
+  return createClient(supabaseUrl, supabaseKey);
+}
 
 // GET /api/photos - 獲取所有照片
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function GET(request: NextRequest) {
   try {
+    const supabase = createSupabaseClient();
     const { data: photos, error } = await supabase
       .from("photos")
       .select("*")
@@ -48,6 +56,7 @@ export async function GET(request: NextRequest) {
 // POST /api/photos - 上傳新照片
 export async function POST(request: NextRequest) {
   try {
+    const supabase = createSupabaseClient();
     const formData = await request.formData();
     const file = formData.get("file") as File;
 
