@@ -1,7 +1,7 @@
 import React from "react";
 import { useInput, useRecordContext } from "react-admin";
 import { Box } from "@mui/material";
-import { ProductImageSelector } from "./ProductImageSelector";
+import { ProductImageUploadDirect } from "./ProductImageUploadDirect";
 
 interface ProductImageFieldProps {
   source: string;
@@ -20,7 +20,7 @@ export const ProductImageField: React.FC<ProductImageFieldProps> = ({
 
   return (
     <Box>
-      <ProductImageSelector
+      <ProductImageUploadDirect
         currentImageUrl={field.value}
         onImageChange={handleImageChange}
         productId={record?.id?.toString()}
