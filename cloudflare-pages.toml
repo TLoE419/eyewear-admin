@@ -5,10 +5,11 @@ publish = "out"
 [build.environment]
 NODE_VERSION = "18"
 
-# 環境變數
+# 環境變數 (公開的值可以放這裡)
 NEXT_PUBLIC_SUPABASE_URL = "https://avzngmdgeisolmnomegs.supabase.co"
 NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF2em5nbWRnZWlzb2xtbm9tZWdzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTcyNjAyOTksImV4cCI6MjA3MjgzNjI5OX0.CO5o7iWv2J8PfnF29bTNg0O0GKLw1q2tDikukgeIcww"
-SUPABASE_SERVICE_ROLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImF2em5nbWRnZWlzb2xtbm9tZWdzIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc1NzI2MDI5OSwiZXhwIjoyMDcyODM2Mjk5fQ.YourServiceRoleKey"
+# ⚠️  SUPABASE_SERVICE_ROLE_KEY 必須在 Cloudflare Pages Dashboard 中設定為加密的環境變數
+# 絕對不要把 service role key 寫在這個檔案中！
 
 # 重定向規則
 [[redirects]]
